@@ -14,7 +14,162 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_sessions: {
+        Row: {
+          created_at: string
+          id: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          title?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      cie10_diagnoses: {
+        Row: {
+          category: string | null
+          code: string
+          created_at: string
+          description: string
+          id: string
+        }
+        Insert: {
+          category?: string | null
+          code: string
+          created_at?: string
+          description: string
+          id?: string
+        }
+        Update: {
+          category?: string | null
+          code?: string
+          created_at?: string
+          description?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      clinical_notes: {
+        Row: {
+          audio_duration: number | null
+          created_at: string
+          id: string
+          structured_note: string | null
+          title: string
+          transcription: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          audio_duration?: number | null
+          created_at?: string
+          id?: string
+          structured_note?: string | null
+          title: string
+          transcription: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          audio_duration?: number | null
+          created_at?: string
+          id?: string
+          structured_note?: string | null
+          title?: string
+          transcription?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      note_diagnoses: {
+        Row: {
+          created_at: string
+          diagnosis_code: string
+          id: string
+          is_primary: boolean | null
+          note_id: string
+        }
+        Insert: {
+          created_at?: string
+          diagnosis_code: string
+          id?: string
+          is_primary?: boolean | null
+          note_id: string
+        }
+        Update: {
+          created_at?: string
+          diagnosis_code?: string
+          id?: string
+          is_primary?: boolean | null
+          note_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "note_diagnoses_diagnosis_code_fkey"
+            columns: ["diagnosis_code"]
+            isOneToOne: false
+            referencedRelation: "cie10_diagnoses"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "note_diagnoses_note_id_fkey"
+            columns: ["note_id"]
+            isOneToOne: false
+            referencedRelation: "clinical_notes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          first_name: string | null
+          id: string
+          institution: string | null
+          last_name: string | null
+          medical_license: string | null
+          specialty: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          first_name?: string | null
+          id?: string
+          institution?: string | null
+          last_name?: string | null
+          medical_license?: string | null
+          specialty?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          first_name?: string | null
+          id?: string
+          institution?: string | null
+          last_name?: string | null
+          medical_license?: string | null
+          specialty?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
