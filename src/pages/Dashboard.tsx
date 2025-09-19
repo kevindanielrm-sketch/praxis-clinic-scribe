@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChatSidebar } from "@/components/ChatSidebar";
 import { AudioRecorder } from "@/components/AudioRecorder";
 import { NoteViewer } from "@/components/NoteViewer";
+import { SettingsSheet } from "@/components/SettingsSheet";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -40,14 +41,7 @@ const Dashboard = () => {
           </div>
           
           <div className="flex items-center space-x-4">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="border-medical-border hover:bg-medical-hover"
-            >
-              <span className="material-icons mr-2 text-sm">settings</span>
-              Settings
-            </Button>
+            <SettingsSheet />
             
             <Button 
               variant="outline" 
@@ -56,7 +50,7 @@ const Dashboard = () => {
               className="border-medical-border hover:bg-medical-hover"
             >
               <span className="material-icons mr-2 text-sm">logout</span>
-              Logout
+              Salir
             </Button>
           </div>
         </header>

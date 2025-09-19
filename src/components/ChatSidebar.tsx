@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { UserProfileDialog } from "@/components/UserProfileDialog";
 import { supabase } from "@/integrations/supabase/client";
 import { formatDistanceToNow } from "date-fns";
 import { es } from "date-fns/locale";
@@ -127,15 +128,7 @@ export const ChatSidebar = ({ onSessionSelect, activeSessionId }: ChatSidebarPro
       </div>
 
       <div className="mt-6 pt-4 border-t border-medical-border">
-        <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
-            <span className="material-icons text-sm text-accent">person</span>
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-sm font-medium truncate">Dr. Clinical</div>
-            <div className="text-xs text-muted-foreground">Physician</div>
-          </div>
-        </div>
+        <UserProfileDialog />
       </div>
     </div>
   );
