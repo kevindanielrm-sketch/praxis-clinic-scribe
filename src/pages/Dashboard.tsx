@@ -1,14 +1,35 @@
+import { useState } from "react";
 import { ChatSidebar } from "@/components/ChatSidebar";
 import { AudioRecorder } from "@/components/AudioRecorder";
+import { NoteViewer } from "@/components/NoteViewer";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
+interface ChatSession {
+  id: string;
+  title: string;
+  date: string;
+  isActive?: boolean;
+  note?: {
+    id: string;
+    title: string;
+    created_at: string;
+    transcription: string;
+    structured_note: string | null;
+    audio_duration: number | null;
+  };
+}
+
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [activeSession, setActiveSession] = useState<ChatSession | null>(null);
 
   return (
     <div className="h-screen bg-background flex">
-      <ChatSidebar />
+      <ChatSidebar 
+        onSessionSelect={setActiveSession}
+        activeSessionId={activeSession?.id || null}
+      />
       
       <div className="flex-1 flex flex-col">
         {/* Top Header */}
@@ -42,7 +63,11 @@ const Dashboard = () => {
 
         {/* Main Content Area */}
         <main className="flex-1 relative">
-          <AudioRecorder />
+          {activeSession?.note ? (
+            <NoteViewer note={activeSession.note} />
+          ) : (
+            <AudioRecorder />
+          )}
         </main>
       </div>
     </div>
