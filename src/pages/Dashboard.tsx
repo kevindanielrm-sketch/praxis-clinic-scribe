@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChatSidebar } from "@/components/ChatSidebar";
 import { AudioRecorder } from "@/components/AudioRecorder";
 import { NoteViewer } from "@/components/NoteViewer";
+import { ConversationBar } from "@/components/ConversationBar";
 import { SettingsSheet } from "@/components/SettingsSheet";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +25,19 @@ interface ChatSession {
 const Dashboard = () => {
   const navigate = useNavigate();
   const [activeSession, setActiveSession] = useState<ChatSession | null>(null);
+  const [isVoiceActive, setIsVoiceActive] = useState(false);
+
+  const handleTextMessage = async (message: string) => {
+    console.log("Text message sent:", message);
+    // TODO: Implement text message handling
+    // This could integrate with OpenAI API or other conversational AI
+  };
+
+  const handleVoiceToggle = () => {
+    setIsVoiceActive(!isVoiceActive);
+    console.log("Voice toggled:", !isVoiceActive);
+    // TODO: Implement voice recording/conversation logic
+  };
 
   return (
     <div className="h-screen bg-background flex">
@@ -56,7 +70,7 @@ const Dashboard = () => {
         </header>
 
         {/* Main Content Area */}
-        <main className="flex-1 relative">
+        <main className="flex-1 relative pb-24"> {/* Added padding bottom for conversation bar */}
           {activeSession?.note ? (
             <NoteViewer note={activeSession.note} />
           ) : (
@@ -64,6 +78,13 @@ const Dashboard = () => {
           )}
         </main>
       </div>
+
+      {/* Conversation Bar */}
+      <ConversationBar
+        onTextMessage={handleTextMessage}
+        onVoiceToggle={handleVoiceToggle}
+        isVoiceActive={isVoiceActive}
+      />
     </div>
   );
 };
