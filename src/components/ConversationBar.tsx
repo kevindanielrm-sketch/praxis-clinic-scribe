@@ -59,7 +59,7 @@ export const ConversationBar = ({
     }
   };
   return (
-    <div className="fixed bottom-4 left-80 right-0 bg-background/95 backdrop-blur-sm border-t border-medical-border p-4">
+    <div className="fixed bottom-4 left-80 right-0 bg-background/95 backdrop-blur-sm p-4">
       <div className="max-w-4xl mx-auto flex items-center gap-3">
         <div className="flex-1 relative">
           <textarea
