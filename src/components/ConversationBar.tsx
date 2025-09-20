@@ -93,7 +93,7 @@ export const ConversationBar = ({
                   : 'hover:bg-medical-hover text-medical-primary'
               }`}
             >
-              <span className="material-icons text-base">
+              <span className="material-icons text-base flex items-center justify-center">
                 {isVoiceActive ? 'mic' : 'mic_none'}
               </span>
             </Button>
