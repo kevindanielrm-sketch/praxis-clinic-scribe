@@ -81,13 +81,13 @@ export const ConversationBar = ({
             }}
           />
           
-          <div className="absolute right-2 bottom-2 flex items-center gap-1">
+          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
             <Button
               size="sm"
               variant="ghost"
               onClick={handleVoiceClick}
               disabled={disabled}
-              className={`h-8 w-8 p-0 rounded-lg transition-all ${
+              className={`h-8 w-8 p-0 rounded-lg transition-all flex items-center justify-center ${
                 isVoiceActive 
                   ? 'bg-medical-primary text-white hover:bg-medical-primary/90 shadow-md' 
                   : 'hover:bg-medical-hover text-medical-primary'
