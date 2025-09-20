@@ -59,7 +59,7 @@ export const ConversationBar = ({
     }
   };
   return (
-    <div className="fixed bottom-0 left-80 right-0 bg-background/95 backdrop-blur-sm border-t border-medical-border p-4">
+    <div className="fixed bottom-4 left-80 right-0 bg-background/95 backdrop-blur-sm border-t border-medical-border p-4">
       <div className="max-w-4xl mx-auto flex items-center gap-3">
         <div className="flex-1 relative">
           <textarea
@@ -87,13 +87,13 @@ export const ConversationBar = ({
               variant="ghost"
               onClick={handleVoiceClick}
               disabled={disabled}
-              className={`h-8 w-8 p-0 rounded-lg ${
+              className={`h-8 w-8 p-0 rounded-lg transition-all ${
                 isVoiceActive 
-                  ? 'bg-medical-primary text-white hover:bg-medical-primary/90' 
-                  : 'hover:bg-medical-hover'
+                  ? 'bg-medical-primary text-white hover:bg-medical-primary/90 shadow-md' 
+                  : 'hover:bg-medical-hover text-medical-primary'
               }`}
             >
-              <span className="material-icons text-sm">
+              <span className="material-icons text-base">
                 {isVoiceActive ? 'mic' : 'mic_none'}
               </span>
             </Button>
