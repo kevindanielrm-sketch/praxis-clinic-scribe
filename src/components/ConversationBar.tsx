@@ -87,15 +87,23 @@ export const ConversationBar = ({
               variant="ghost"
               onClick={handleVoiceClick}
               disabled={disabled}
-              className={`h-8 w-8 p-0 rounded-lg transition-all flex items-center justify-center ${
+              className={`h-12 w-12 p-0 rounded-full transition-all duration-300 relative overflow-hidden ${
                 isVoiceActive 
-                  ? 'bg-medical-primary text-white hover:bg-medical-primary/90 shadow-md' 
-                  : 'hover:bg-medical-hover text-medical-primary'
+                  ? 'bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg animate-pulse' 
+                  : 'bg-gradient-to-br from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 text-orange-600 border-2 border-orange-300'
               }`}
             >
-              <span className="material-icons text-base flex items-center justify-center">
-                {isVoiceActive ? 'mic' : 'mic_none'}
-              </span>
+              {isVoiceActive && (
+                <>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-300/50 to-orange-500/50 animate-ping"></div>
+                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/20 to-white/10"></div>
+                </>
+              )}
+              <div className={`relative z-10 w-3 h-3 rounded-full transition-all duration-300 ${
+                isVoiceActive 
+                  ? 'bg-white/90 animate-pulse' 
+                  : 'bg-orange-500'
+              }`}></div>
             </Button>
             
             {textInput.trim() && (
