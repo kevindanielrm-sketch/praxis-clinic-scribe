@@ -26,23 +26,23 @@ export const NoteViewer = ({ note }: NoteViewerProps) => {
   };
 
   return (
-    <div className="h-full flex flex-col p-6">
-      <div className="mb-6">
-        <div className="flex items-center justify-between mb-2">
-          <h1 className="text-2xl font-bold text-foreground">{note.title}</h1>
+    <div className="h-full flex flex-col p-4 md:p-6">
+      <div className="mb-4 md:mb-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
+          <h1 className="text-xl md:text-2xl font-bold text-foreground">{note.title}</h1>
           {note.audio_duration && (
-            <Badge variant="secondary" className="text-accent">
+            <Badge variant="secondary" className="text-accent self-start">
               <span className="material-icons mr-1 text-sm">schedule</span>
               {formatDuration(note.audio_duration)}
             </Badge>
           )}
         </div>
-        <p className="text-muted-foreground">
+        <p className="text-xs md:text-sm text-muted-foreground">
           {format(new Date(note.created_at), "PPpp", { locale: es })}
         </p>
       </div>
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {/* Transcripción */}
         <Card className="medical-card">
           <CardHeader>
@@ -52,8 +52,8 @@ export const NoteViewer = ({ note }: NoteViewerProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <ScrollArea className="h-[400px]">
-              <p className="text-sm leading-relaxed whitespace-pre-wrap">
+            <ScrollArea className="h-[300px] md:h-[400px]">
+              <p className="text-xs md:text-sm leading-relaxed whitespace-pre-wrap">
                 {note.transcription}
               </p>
             </ScrollArea>
@@ -69,15 +69,15 @@ export const NoteViewer = ({ note }: NoteViewerProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <ScrollArea className="h-[400px]">
+            <ScrollArea className="h-[300px] md:h-[400px]">
               {note.structured_note ? (
-                <div className="text-sm leading-relaxed whitespace-pre-wrap">
+                <div className="text-xs md:text-sm leading-relaxed whitespace-pre-wrap">
                   {note.structured_note}
                 </div>
               ) : (
                 <div className="text-center py-8">
                   <span className="material-icons text-4xl text-muted-foreground mb-2">pending</span>
-                  <p className="text-muted-foreground">
+                  <p className="text-xs md:text-sm text-muted-foreground">
                     La nota estructurada está siendo procesada...
                   </p>
                 </div>
@@ -87,21 +87,21 @@ export const NoteViewer = ({ note }: NoteViewerProps) => {
         </Card>
       </div>
 
-      <Separator className="my-6" />
+      <Separator className="my-4 md:my-6" />
       
       {/* Acciones */}
-      <div className="flex items-center justify-end space-x-4">
-        <button className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors">
+      <div className="flex items-center justify-end space-x-2 md:space-x-4">
+        <button className="flex items-center space-x-1 md:space-x-2 text-xs md:text-sm text-muted-foreground hover:text-accent transition-colors">
           <span className="material-icons text-sm">download</span>
-          <span>Exportar</span>
+          <span className="hidden sm:inline">Exportar</span>
         </button>
-        <button className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors">
+        <button className="flex items-center space-x-1 md:space-x-2 text-xs md:text-sm text-muted-foreground hover:text-accent transition-colors">
           <span className="material-icons text-sm">edit</span>
-          <span>Editar</span>
+          <span className="hidden sm:inline">Editar</span>
         </button>
-        <button className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-destructive transition-colors">
+        <button className="flex items-center space-x-1 md:space-x-2 text-xs md:text-sm text-muted-foreground hover:text-destructive transition-colors">
           <span className="material-icons text-sm">delete</span>
-          <span>Eliminar</span>
+          <span className="hidden sm:inline">Eliminar</span>
         </button>
       </div>
     </div>

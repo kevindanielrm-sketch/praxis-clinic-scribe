@@ -29,10 +29,10 @@ export const AudioRecorder = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center flex-1 p-8">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-2">Clinical Recording</h2>
-        <p className="text-muted-foreground">
+    <div className="flex flex-col items-center justify-center flex-1 p-4 md:p-8">
+      <div className="text-center mb-6 md:mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">Clinical Recording</h2>
+        <p className="text-sm md:text-base text-muted-foreground px-4">
           {isRecording 
             ? "Recording your clinical notes..." 
             : "Click to start recording your patient consultation"
@@ -70,11 +70,11 @@ export const AudioRecorder = () => {
       )}
 
       {!isRecording && recordingTime === 0 && (
-        <div className="text-center max-w-md">
-          <p className="text-sm text-muted-foreground mb-4">
+        <div className="text-center max-w-md px-4">
+          <p className="text-xs md:text-sm text-muted-foreground mb-4">
             Speak naturally during your patient consultation. ClinicalNotes will automatically:
           </p>
-          <div className="grid grid-cols-1 gap-3 text-sm">
+          <div className="grid grid-cols-1 gap-2 md:gap-3 text-xs md:text-sm">
             <div className="flex items-center space-x-2">
               <span className="material-icons text-accent text-sm">check_circle</span>
               <span>Transcribe conversation accurately</span>
